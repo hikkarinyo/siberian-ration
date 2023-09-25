@@ -1,0 +1,23 @@
+@import '../../assets/layout/colors';
+
+.ourAdvantages {
+  height: 100vh;
+}
+
+.ourAdvantagesTitle {
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 1.23;
+  color: $accent;
+}
+
+.ourAdvantagesWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  grid-row-gap: 20px;
+  position: absolute;
+  inset: 0;
+  left: 300px;
+}

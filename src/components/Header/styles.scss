@@ -1,0 +1,84 @@
+@import '../../assets/layout/colors';
+
+.header {
+  height: 80px;
+  background-color: transparent;
+  box-shadow: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: background-color 0.5s ease;
+}
+
+.header.scrolled {
+  background-color: $accent;
+  box-shadow: rgba(0, 0, 0, 0) 0 1px 3px;
+}
+
+.headerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.headerLogo {
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 1.4;
+}
+
+.headerNav {
+  display: flex;
+  align-items: center;
+  grid-column-gap: 30px;
+
+  &-link {
+    color: $primary;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+}
+
+.headerPhone {
+  color: $primary;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.headerSocialLinks {
+  display: flex;
+  align-items: center;
+  grid-column-gap: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+  .header {
+    grid-template-columns: auto;
+    justify-content: space-between;
+  }
+
+  .headerNav {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .headerLogo {
+    font-size: 25px;
+  }
+}
