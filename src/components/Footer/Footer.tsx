@@ -1,29 +1,35 @@
-import classNames from "classnames"
-import { SvgIcon } from "../../common/SvgIcon/SvgIcon"
+import classNames from 'classnames'
+import { SocialIcon } from '../../common/SocialIcon/SocialIcon'
 
 
 const cx = classNames.bind(require('./styles.scss'))
 
-const Footer = () => {
+interface FooterProps {
+    id: string
+}
+
+const Footer = (props: FooterProps) => {
     return (
-        <footer className={cx('footer')}>
-                <nav className={cx('footer__wrapper', 'container')}>
-                    <div className={cx('footer__wrapper-col')}>
-                        <h5 className={cx('footer__title')}>Адрес</h5>
-                        <p className={cx('footer__text')}>г. Томск, ул. Енисейская, д. 37, оф. 328</p>
-                    </div>
-                    <div className={cx('footer__wrapper-col')}>
-                        <h5 className={cx('footer__title')}>Телефон</h5>
-                        <a href="tel:+79917770591" className={cx('footer__text')}>+7 (991) 777-05-91</a>
-                    </div>
-                    <div className={cx('footer__wrapper-col')}>
-                        <h5 className={cx('footer__title')}>Почта</h5>
-                        <a href="mailto:info@qeep.pro" className={cx('footer__text')}>info@qeep.pro</a>
-                    </div>
-                    <div className={cx('footer__wrapper-col')}>
-                        <SvgIcon src={"logo-white.svg"} width={"70"}/>
-                    </div>
-                </nav>
+        <footer id={props.id} className={cx('footer')}>
+            <div className={cx('footerWrapper', 'container')}>
+                <div className={cx('footerContacts')}>
+                    <h1 className={cx('footerTitle')}>Контакты</h1>
+                    <p className={cx('footerText')}>
+                        г. Томск, ул. Мокрушина 9 С.16
+                    </p>
+                    <p className={cx('footerText')}>
+                        Тел:
+                        <a className={cx('footerLink')} href='tel:+7(3822)33-06-03'>+7 (3822) 33-06-03</a>
+                    </p>
+                    <p className={cx('footerText')}>
+                        Email:
+                        <a className={cx('footerLink')} href='mailto:sibracion@mail.ru'>sibracion@mail.ru</a>
+                    </p>
+                </div>
+                {/*TODO: Заменить на SVG*/}
+                <img src={'/image/logo.png'} width={'250px'} height={'200px'} alt={'logo'}/>
+                <SocialIcon width={'43'}/>
+            </div>
         </footer>
     )
 }

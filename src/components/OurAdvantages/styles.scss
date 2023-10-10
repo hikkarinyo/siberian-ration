@@ -1,23 +1,60 @@
 @import '../../assets/layout/colors';
 
 .ourAdvantages {
-  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 90px;
+  padding-bottom: 120px;
+  background-color: $primary;
 }
 
 .ourAdvantagesTitle {
+  color: $secondary;
   font-size: 42px;
-  font-weight: 300;
   line-height: 1.23;
-  color: $accent;
+  font-weight: 400;
+  margin-bottom: 100px;
+  text-align: center;
 }
 
-.ourAdvantagesWrapper {
+.ourAdvantagesBlocks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 50px;
+  grid-row-gap: 50px;
+}
+
+.ourAdvantagesBlock {
   display: flex;
-  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  grid-row-gap: 20px;
-  position: absolute;
-  inset: 0;
-  left: 300px;
+  align-items: center;
+  grid-row-gap: 25px;
+}
+
+.ourAdvantagesBlockTitle {
+  color: $secondary;
+  font-size: 14px;
+  line-height: 1.23;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 768px) {
+
+  .ourAdvantagesBlocks {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 500px) {
+
+  .ourAdvantagesTitle {
+    font-size: 30px;
+  }
+
+  .ourAdvantagesBlocks {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

@@ -1,48 +1,65 @@
-import React from "react"
-import classNames from "classnames";
-import {ParallaxBanner} from "react-scroll-parallax";
-import {BannerLayer} from "react-scroll-parallax/dist/components/ParallaxBanner/types";
-import {Button} from "../../common/Button/Button";
+import React, { useState } from 'react'
+import classNames from 'classnames'
+import { ParallaxBanner } from 'react-scroll-parallax'
+import { BannerLayer } from 'react-scroll-parallax/dist/components/ParallaxBanner/types'
+import { Button } from '../../common/Button/Button'
+import ScrollAnimation from 'react-animate-on-scroll'
+import Modal from '../../common/Modal/Modal'
+import Form from '../../common/Form/Form'
 
 
 const cx = classNames.bind(require('./styles.scss'))
 
 interface BannerProps {
-    id?: string;
+    id: string
 }
 
-const Banner = () => {
+const Banner = (props: BannerProps) => {
+    const [isOpen, setIsOpen] = useState(false)
+
+    const handleOpenModal = () => {
+        setIsOpen(true);
+    }
+
+    const handleCloseModal = () => {
+        setIsOpen(false);
+    }
+
     const background: BannerLayer = {
-        image: "https://static.tildacdn.com/tild3432-3235-4561-a365-643535353230/DSC00327.jpg",
+        image: '/image/20230916-0225_insta.svg',
         translateY: [0, 50],
         opacity: [1, 0.3],
-        scale: [1.05, 1, "easeOutCubic"],
+        scale: [1.05, 1, 'easeOutCubic'],
         shouldAlwaysCompleteAnimation: true
     }
 
     const headline: BannerLayer = {
         translateY: [0, 30],
-        scale: [1, 1.05, "easeOutCubic"],
-        shouldAlwaysCompleteAnimation: true,
+        scale: [1, 1.05, 'easeOutCubic'],
+        shouldAlwaysCompleteAnimation: false,
         expanded: false,
         children: (
-            <div className={cx("bannerWrapper")}>
-                <h1 className={cx("bannerTitle")}>Выездное обслуживание<br/>мероприятия</h1>
-                <ul className={cx("bannerList")}>
-                    <li className={cx("bannerList-item")}>банкет</li>
-                    <li className={cx("bannerList-item")}>кофе-брейк</li>
-                    <li className={cx("bannerList-item")}>фуршет</li>
+            <ScrollAnimation animateIn={'fadeInUp'} className={cx('bannerWrapper')}>
+                <h1 className={cx('bannerTitle')}>Выездное обслуживание<br/>мероприятия</h1>
+                <ul className={cx('bannerList')}>
+                    <li className={cx('bannerList-item')}>банкет</li>
+                    <li className={cx('bannerList-item')}>кофе-брейк</li>
+                    <li className={cx('bannerList-item')}>фуршет</li>
                 </ul>
-                <Button>Забронировать</Button>
-            </div>
+                <Button onClick={handleOpenModal}>Забронировать</Button>
+            </ScrollAnimation>
         )
     }
 
     return (
-        <ParallaxBanner
-            layers={[background, headline]}
-            className={cx("banner")}
-        />
+        < >
+            <ParallaxBanner
+                id={props.id}
+                layers={[background, headline]}
+                className={cx('banner')}
+            />
+            <Modal isOpen={isOpen} onClose={handleCloseModal}><Form onCloseModal={handleCloseModal}/></Modal>
+        </>
     )
 }
 

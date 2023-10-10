@@ -7,7 +7,8 @@
   border: 2px solid transparent;
   font-size: 16px;
   font-weight: 600;
-  width: 315px;
+  width: 100%;
+  max-width: 315px;
   height: 60px;
   box-sizing: border-box;
   border-radius: 4px;
@@ -20,5 +21,31 @@
     background-color: transparent;
     border-color: $primary;
     color: $primary ;
+  }
+
+  &__dark {
+    background: transparent;
+    color: $secondary;
+    border: 2px solid $secondary;
+
+    &:hover,
+    &:active {
+      background-color: $secondary;
+      border-color: $primary;
+      color: $primary ;
+    }
+  }
+
+  &__darkV2 {
+    background-color: $secondary;
+    color: $primary;
+    border: 2px solid $secondary;
+
+    &:hover,
+    &:active {
+      background-color: $primary;
+      border-color: $secondary;
+      color: $secondary ;
+    }
   }
 }

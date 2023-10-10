@@ -1,42 +1,35 @@
-import React from "react"
-import classNames from "classnames";
-import {ParallaxBanner} from "react-scroll-parallax";
-import {BannerLayer} from "react-scroll-parallax/dist/components/ParallaxBanner/types";
-import {Button} from "../../common/Button/Button";
-
+import classNames from 'classnames'
+import {SvgIcon} from '../../common/SvgIcon/SvgIcon'
 
 const cx = classNames.bind(require('./styles.scss'))
 
+
 interface OurAdvantagesProps {
-    id?: string;
+    id?: string
 }
 
-const OurAdvantages = () => {
-
-    const background: BannerLayer = {
-        translateY: [0, 50],
-        opacity: [1, 0.3],
-        scale: [1.05, 1, "easeOutCubic"],
-        shouldAlwaysCompleteAnimation: true
-    }
-
-    const headline: BannerLayer = {
-        translateY: [0, 30],
-        scale: [1, 1.05, "easeOutCubic"],
-        shouldAlwaysCompleteAnimation: true,
-        expanded: false,
-        children: (
-            <section className={cx("оurAdvantagesWrapper")}>
-                <h1 className={cx("оurAdvantagesTitle")}>Наши преимущества</h1>
-            </section>
-        )
-    }
+const OurAdvantages = (props: OurAdvantagesProps) => {
+    const advantages = [
+        { text: 'качественно', icon: 'hand.svg' },
+        { text: 'надежно', icon: 'reliably.svg' },
+        { text: 'доступно', icon: 'available.svg' },
+        { text: 'профессионально', icon: 'cook.svg' }
+    ]
 
     return (
-        <ParallaxBanner
-            layers={[background, headline]}
-            className={cx("оurAdvantages")}
-        />
+        <section id={props.id} className={'ourAdvantages'}>
+            <div className={cx('container')}>
+                <h1 className={cx('ourAdvantagesTitle')}>Наши преимущества</h1>
+                <div className={cx('ourAdvantagesBlocks')}>
+                    {advantages.map((advantage, index) => (
+                        <div className={cx('ourAdvantagesBlock')} key={index}>
+                            <SvgIcon src={advantage.icon} width={'80'}/>
+                            <h1 className={cx('ourAdvantagesBlockTitle')}>{advantage.text}</h1>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
     )
 }
 

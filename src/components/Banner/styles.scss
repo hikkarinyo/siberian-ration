@@ -12,7 +12,8 @@
   grid-row-gap: 20px;
   position: absolute;
   inset: 0;
-  left: 300px;
+  left: 260px;
+  margin-left: 40px;
 }
 
 .bannerTitle {
@@ -31,4 +32,32 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .bannerWrapper {
+    left: 20px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .bannerWrapper {
+    left: 70px;
+    margin-left: 20px;
+
+    .button {
+      width: 280px;
+    }
+  }
+
+  .bannerTitle {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .bannerWrapper {
+    left: 0;
+    margin-left: 20px;
+  }
 }
