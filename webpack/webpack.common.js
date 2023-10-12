@@ -26,16 +26,8 @@ module.exports = {
                 use: ['style-loader', 'css-loader'],
             },
             {
-                test: /\.(ico|gif|png|jpg|jpeg)$/i,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',
-                            outputPath: 'images',
-                        },
-                    },
-                ],
+                test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+                type: 'asset/resource',
             },
             {
                 test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
