@@ -5,9 +5,6 @@ module.exports = {
     entry: path.resolve(__dirname, '..', './src/index.tsx'),
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
-        alias: {
-            images: path.resolve(__dirname, './public/'),
-        },
     },
     module: {
         rules: [
@@ -29,8 +26,16 @@ module.exports = {
                 use: ['style-loader', 'css-loader'],
             },
             {
-                test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-                type: 'asset/resource',
+                test: /\.(ico|gif|png|jpg|jpeg)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'images',
+                        },
+                    },
+                ],
             },
             {
                 test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
