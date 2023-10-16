@@ -43,7 +43,7 @@ const Header = () => {
 
 
     return (
-        <header className={cx('header', { 'scrolled': isScrolled },  { mobile: isMobileMenuOpen })}>
+        <header className={cx('header', { 'scrolled': isScrolled, mobile: isMobileMenuOpen })}>
             <div className={cx('headerWrapper', 'container', { mobile: isMobileMenuOpen })}>
                 <div className={cx('headerInner')}>
                     <Link to='/#banner' className={cx('headerLogo')} onClick={closeMobileMenu}>Сибирский рацион</Link>

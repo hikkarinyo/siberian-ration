@@ -23,6 +23,13 @@
     color: $primary ;
   }
 
+  &:disabled {
+    background-color: $button-bg-disabled-color;
+    border-color: $button-bg-disabled-color;
+    cursor: default;
+    color: $primary;
+  }
+
   &__dark {
     background: transparent;
     color: $secondary;
@@ -32,7 +39,13 @@
     &:active {
       background-color: $secondary;
       border-color: $primary;
-      color: $primary ;
+      color: $primary;
+    }
+
+    &:disabled {
+      background-color: $button-bg-disabled-color;
+      border-color: $button-bg-disabled-color;
+      cursor: default;
     }
   }
 
@@ -45,7 +58,14 @@
     &:active {
       background-color: $primary;
       border-color: $secondary;
-      color: $secondary ;
+      color: $secondary;
+    }
+
+    &:disabled {
+      background-color: $button-bg-disabled-color;
+      border-color: $button-bg-disabled-color;
+      cursor: default;
+      color: $primary;
     }
   }
 }

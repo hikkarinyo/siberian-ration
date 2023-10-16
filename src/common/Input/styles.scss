@@ -4,12 +4,8 @@
   position: relative;
   width: 100%;
 
-  &.focused {
-    .inputLabel {
-      &.active {
-        transform: translateY(-30px);
-      }
-    }
+  &.focused .inputLabel.active {
+    transform: translateY(-30px);
   }
 }
 

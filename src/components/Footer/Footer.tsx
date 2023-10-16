@@ -26,9 +26,8 @@ const Footer = (props: FooterProps) => {
                         <a className={cx('footerLink')} href='mailto:sibracion@mail.ru'>sibracion@mail.ru</a>
                     </p>
                 </div>
-                {/*TODO: Заменить на SVG*/}
-                <img src={'/image/logo.png'} width={'250px'} height={'200px'} alt={'logo'}/>
-                <SocialIcon width={'43'}/>
+                <img src='/images/logo.png' width='250' height='200' alt='logo' draggable='false'/>
+                <SocialIcon width='43'/>
             </div>
         </footer>
     )

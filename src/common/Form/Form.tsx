@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { Input } from '../Input/Input'
 import { Button } from '../Button/Button'
-import { request } from '../../api'
+import { sendApplication } from '../../api'
 import { schema } from '../../helpers/validation'
 import { FormProps } from '../types'
 import { Message } from '../Message/Message'
@@ -23,6 +23,7 @@ const Form = ({onCloseModal}: FormProps) => {
         reset
     } = useForm({mode: 'onBlur', resolver: yupResolver(schema)})
     const [message, setMessage] = useState('')
+    const [isDisabled, setIsDisabled] = useState(false)
 
     const onSubmit = async (data: FormData) => {
         const formData = new FormData()
@@ -30,11 +31,14 @@ const Form = ({onCloseModal}: FormProps) => {
         formData.append('phone', data.phone)
 
         try {
-            await request(formData)
+            setIsDisabled(true)
+            await sendApplication(formData)
             reset()
             setMessage('success')
         } catch (error) {
             setMessage('error')
+        } finally {
+            setIsDisabled(false)
         }
     }
 
@@ -55,18 +59,18 @@ const Form = ({onCloseModal}: FormProps) => {
                         Оставьте свои контактные данные и мы свяжемся с Вами для уточнения деталей
                     </p>
                     <Input
-                        name={'name'}
-                        label={'Имя'}
+                        name='name'
+                        label='Имя'
                         register={register}
                         error={errors.name?.message}
                     />
                     <Input
-                        name={'phone'}
-                        label={'Телефон'}
+                        name='phone'
+                        label='Телефон'
                         register={register}
                         error={errors.phone?.message}
                     />
-                    <Button type={'submit'} variant={'darkV2'}>Отправить</Button>
+                    <Button type='submit' variant='darkV2' disabled={isDisabled}>Отправить</Button>
                 </form>
             }
         </>

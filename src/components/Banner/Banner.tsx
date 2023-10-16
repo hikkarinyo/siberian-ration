@@ -26,7 +26,7 @@ const Banner = (props: BannerProps) => {
     }
 
     const background: BannerLayer = {
-        image: '/image/20230916-0225_insta.svg',
+        image: '/images/20230916-0225_insta.svg',
         translateY: [0, 50],
         opacity: [1, 0.3],
         scale: [1.05, 1, 'easeOutCubic'],

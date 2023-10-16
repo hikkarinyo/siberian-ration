@@ -19,7 +19,7 @@ const SampleNextArrow = (props: ArrowsProps) => {
 
     return (
         <button className={cx('nextButton', className)} onClick={onClick}>
-            <SvgIcon src={'right-arrow.svg'} width={'30'}/>
+            <SvgIcon src='/icons/right-arrow.svg' width='30'/>
         </button>
     )
 }
@@ -31,7 +31,7 @@ const SamplePrevArrow = (props: ArrowsProps) => {
             className={cx('prevButton', className)}
             onClick={onClick}
         >
-            <SvgIcon src={'left-arrow.svg'} width={'30'}/>
+            <SvgIcon src='/icons/left-arrow.svg' width='30'/>
         </button>
     )
 }
@@ -44,16 +44,14 @@ export const MySlider = ({ images }: SliderProps) => {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        nextArrow: <SampleNextArrow className={'nextButton'}/>,
-        prevArrow: <SamplePrevArrow className={'prevButton'}/>,
+        nextArrow: <SampleNextArrow className='nextButton'/>,
+        prevArrow: <SamplePrevArrow className='prevButton'/>,
     }
 
     return (
         <Slider {...settings}>
             {images.map((image, index) => (
-                <div key={index}>
-                    <SvgIcon src={`${image}`}/>
-                </div>
+                <img key={index} src={`${image}`} alt='menu'/>
             ))}
         </Slider>
     )

@@ -15,21 +15,23 @@ export const Message = ({typeMessage}: MessageProps) => (
     <div className={cx('messageContent')}>
         {typeMessage  === type.success &&
             <>
-                <SvgIcon src={'ok.svg'} width={'100'}/>
+                <SvgIcon src='ok.svg' width='100'/>
                 <p className={cx('message')}>
                     Благодарим вас!
                     <br/>
                     Мы обязательно свяжемся с вами в ближайшее время.
                 </p>
-            </>}
+            </>
+        }
         {typeMessage === type.error &&
             <>
-                <SvgIcon src={'error.svg'} width={'100'}/>
+                <SvgIcon src='error.svg' width='100'/>
                 <p className={cx('message')}>
                     Возникла ошибка при обработке вашей заявки.
                     <br/>
                     Пожалуйста, попробуйте ещё раз позже.
                 </p>
-            </>}
+            </>
+        }
     </div>
 )

@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 const cx = classNames.bind(require('./styles.scss'))
 
-export const Input = ({value, label, name, register, error, onChange}: InputProps, {...rest}) => {
+export const Input = ({value, label, name, register, error, onChange}: InputProps) => {
     const [isFocused, setIsFocused] = useState(false)
 
     return (
@@ -17,14 +17,10 @@ export const Input = ({value, label, name, register, error, onChange}: InputProp
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
                 onChange={onChange}
-                {...rest}
                 {...register(name)}
             />
             <label
-                className={cx(
-                    'inputLabel',
-                    {active: isFocused || value},
-                    {'inputLabelError': error}
+                className={cx('inputLabel', {active: isFocused || value, 'inputLabelError': error}
                 )}
             >
                 {label}

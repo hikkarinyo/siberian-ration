@@ -15,18 +15,18 @@ interface MenuProps {
 const Menu = (props: MenuProps) => {
     const [isOpen, setIsOpen] = useState(false)
     const menuImages = [
-        '/menu/page-1.svg',
-        '/menu/page-2.svg',
-        '/menu/page-3.svg',
-        '/menu/page-4.svg',
-        '/menu/page-5.svg',
-        '/menu/page-6.svg',
-        '/menu/page-7.svg',
-        '/menu/page-8.svg',
-        '/menu/page-9.svg',
-        '/menu/page-10.svg',
-        '/menu/page-11.svg',
-        '/menu/page-12.svg',
+        'images/menu/page-1.webp',
+        'images/menu/page-2.webp',
+        'images/menu/page-3.webp',
+        'images/menu/page-4.webp',
+        'images/menu/page-5.webp',
+        'images/menu/page-6.webp',
+        'images/menu/page-7.webp',
+        'images/menu/page-8.webp',
+        'images/menu/page-9.webp',
+        'images/menu/page-10.webp',
+        'images/menu/page-11.webp',
+        'images/menu/page-12.webp',
     ]
 
     const handleOpenModal = () => {
@@ -38,12 +38,12 @@ const Menu = (props: MenuProps) => {
     
     return (
         <>
-            <section id={props.id} className={'menu'}>
+            <section id={props.id} className={cx('menu')}>
                 <div className={cx('container')}>
                     <h1 className={cx('menuTitle')}>Меню</h1>
                     <MySlider images={menuImages}/>
                 </div>
-                <Button variant={'dark'} onClick={handleOpenModal}>Забронировать</Button>
+                <Button variant='dark' onClick={handleOpenModal}>Забронировать</Button>
             </section>
             <Modal isOpen={isOpen} onClose={handleCloseModal}><Form onCloseModal={handleCloseModal}/></Modal>
         </>

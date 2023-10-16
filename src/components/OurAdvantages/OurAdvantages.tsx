@@ -10,10 +10,10 @@ interface OurAdvantagesProps {
 
 const OurAdvantages = (props: OurAdvantagesProps) => {
     const advantages = [
-        { text: 'качественно', icon: 'hand.svg' },
-        { text: 'надежно', icon: 'reliably.svg' },
-        { text: 'доступно', icon: 'available.svg' },
-        { text: 'профессионально', icon: 'cook.svg' }
+        { text: 'качественно', icon: '/icons/hand.svg' },
+        { text: 'надежно', icon: '/icons/reliably.svg' },
+        { text: 'доступно', icon: '/icons/available.svg' },
+        { text: 'профессионально', icon: '/icons/cook.svg' }
     ]
 
     return (
@@ -23,7 +23,7 @@ const OurAdvantages = (props: OurAdvantagesProps) => {
                 <div className={cx('ourAdvantagesBlocks')}>
                     {advantages.map((advantage, index) => (
                         <div className={cx('ourAdvantagesBlock')} key={index}>
-                            <SvgIcon src={advantage.icon} width={'80'}/>
+                            <SvgIcon src={advantage.icon} width='80'/>
                             <h1 className={cx('ourAdvantagesBlockTitle')}>{advantage.text}</h1>
                         </div>
                     ))}
