@@ -49,10 +49,20 @@ module.exports = {
             patterns: [
                 {
                     from: path.resolve(__dirname, '..', './public/images'),
-                    to: path.join(__dirname, '..', './build/images'),
+                    to: path.resolve(__dirname, '..', './build/images'),
+                    noErrorOnMissing: true
+                },
+                {
+                    from: path.resolve(__dirname, '..', './public/favicons'),
+                    to: path.resolve(__dirname, '..', './build/favicons'),
+                    noErrorOnMissing: true
+                },
+                {
+                    from: path.resolve(__dirname, '..', './public/icons'),
+                    to: path.resolve(__dirname, '..', './build/icons'),
                     noErrorOnMissing: true
                 }
             ]
         })
-    ],
+    ]
 }
