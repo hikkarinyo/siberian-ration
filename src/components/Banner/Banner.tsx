@@ -6,6 +6,7 @@ import { Button } from '../../common/Button/Button'
 import ScrollAnimation from 'react-animate-on-scroll'
 import Modal from '../../common/Modal/Modal'
 import Form from '../../common/Form/Form'
+import { ToastContainer } from 'react-toastify'
 
 
 const cx = classNames.bind(require('./styles.scss'))
@@ -18,15 +19,15 @@ const Banner = (props: BannerProps) => {
     const [isOpen, setIsOpen] = useState(false)
 
     const handleOpenModal = () => {
-        setIsOpen(true);
+        setIsOpen(true)
     }
 
     const handleCloseModal = () => {
-        setIsOpen(false);
+        setIsOpen(false)
     }
 
     const background: BannerLayer = {
-        image: '/images/20230916-0225_insta.svg',
+        image: '/images/banner.jpg',
         translateY: [0, 50],
         opacity: [1, 0.3],
         scale: [1.05, 1, 'easeOutCubic'],
@@ -58,7 +59,10 @@ const Banner = (props: BannerProps) => {
                 layers={[background, headline]}
                 className={cx('banner')}
             />
-            <Modal isOpen={isOpen} onClose={handleCloseModal}><Form onCloseModal={handleCloseModal}/></Modal>
+            <Modal isOpen={isOpen} onClose={handleCloseModal}>
+                <Form onCloseModal={handleCloseModal}/>
+            </Modal>
+            <ToastContainer autoClose={3000} />
         </>
     )
 }

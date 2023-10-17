@@ -10,11 +10,4 @@ export const schema = yup
         phone: yup
             .string()
             .required('Обязательное поле')
-            .test('phone', 'Не правильно заполнено поле "Телефон"', (v) => {
-                if (!v) {
-                    return true
-                }
-                return /^\+?\d{6,15}$/.test(v)
-            })
-
     })

@@ -22,9 +22,19 @@ export interface SliderProps {
 export interface InputProps {
     label: string
     value?: string
-    name?: string
+    name: string
     error?: string
     register?: any
+    onChange?: () => void
+}
+
+export interface PhoneInputProps {
+    label: string
+    value?: string
+    name: string
+    mask: string
+    error?: string
+    control?: any
     onChange?: () => void
 }
 

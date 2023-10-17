@@ -9,7 +9,6 @@ export const sendApplication = async (formData: FormData) => {
         })
         return await response.json()
     } catch (error) {
-        console.log(error)
         throw error
     }
 }

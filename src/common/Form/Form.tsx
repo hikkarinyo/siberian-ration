@@ -7,7 +7,9 @@ import { Button } from '../Button/Button'
 import { sendApplication } from '../../api'
 import { schema } from '../../helpers/validation'
 import { FormProps } from '../types'
-import { Message } from '../Message/Message'
+import { Slide, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { PhoneInput } from '../Input/PhoneInput'
 
 
 const cx = classNames.bind(require('./styles.scss'))
@@ -20,9 +22,8 @@ interface FormData {
 const Form = ({onCloseModal}: FormProps) => {
     const {
         register, handleSubmit, formState: {errors},
-        reset
+        reset, control
     } = useForm({mode: 'onBlur', resolver: yupResolver(schema)})
-    const [message, setMessage] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)
 
     const onSubmit = async (data: FormData) => {
@@ -34,9 +35,18 @@ const Form = ({onCloseModal}: FormProps) => {
             setIsDisabled(true)
             await sendApplication(formData)
             reset()
-            setMessage('success')
+            onCloseModal()
+            toast.success(
+                'Благодарим вас! Мы обязательно свяжемся с вами в ближайшее время.', {
+                    position: toast.POSITION.TOP_RIGHT,
+                    transition: Slide
+            })
         } catch (error) {
-            setMessage('error')
+            toast.error(
+                'Возникла ошибка при обработке вашей заявки. Пожалуйста, попробуйте ещё раз позже.', {
+                    position: toast.POSITION.TOP_RIGHT,
+                    transition: Slide
+                })
         } finally {
             setIsDisabled(false)
         }
@@ -44,35 +54,33 @@ const Form = ({onCloseModal}: FormProps) => {
 
     useEffect(() => {
         return () => {
-            setMessage('')
             reset()
         }
     }, [onCloseModal, reset])
 
     return (
         <>
-            {message
-                ? <Message typeMessage={message}/>
-                : <form className={cx('form')} onSubmit={handleSubmit(onSubmit)}>
-                    <h1 className={cx('formTitle')}>Форма для бронирования</h1>
-                    <p className={cx('formSubTitle')}>
-                        Оставьте свои контактные данные и мы свяжемся с Вами для уточнения деталей
-                    </p>
-                    <Input
-                        name='name'
-                        label='Имя'
-                        register={register}
-                        error={errors.name?.message}
-                    />
-                    <Input
-                        name='phone'
-                        label='Телефон'
-                        register={register}
-                        error={errors.phone?.message}
-                    />
-                    <Button type='submit' variant='darkV2' disabled={isDisabled}>Отправить</Button>
-                </form>
-            }
+
+            <form className={cx('form')} onSubmit={handleSubmit(onSubmit)}>
+                <h1 className={cx('formTitle')}>Форма для бронирования</h1>
+                <p className={cx('formSubTitle')}>
+                    Оставьте свои контактные данные и мы свяжемся с Вами для уточнения деталей
+                </p>
+                <Input
+                    name='name'
+                    label='Имя'
+                    register={register}
+                    error={errors.name?.message}
+                />
+                <PhoneInput
+                    name='phone'
+                    label='Телефон'
+                    mask="+7 (999) 999-99-99"
+                    control={control}
+                    error={errors.phone?.message}
+                />
+                <Button type='submit' variant='darkV2' disabled={isDisabled}>Отправить</Button>
+            </form>
         </>
     )
 }

@@ -4,6 +4,7 @@ import { MySlider } from '../../common/MySlider/MySlider'
 import { Button } from '../../common/Button/Button'
 import Modal from '../../common/Modal/Modal'
 import Form from '../../common/Form/Form'
+import { ToastContainer } from 'react-toastify'
 
 const cx = classNames.bind(require('./styles.scss'))
 
@@ -30,10 +31,10 @@ const Menu = (props: MenuProps) => {
     ]
 
     const handleOpenModal = () => {
-        setIsOpen(true);
+        setIsOpen(true)
     }
     const handleCloseModal = () => {
-        setIsOpen(false);
+        setIsOpen(false)
     }
     
     return (
@@ -46,6 +47,7 @@ const Menu = (props: MenuProps) => {
                 <Button variant='dark' onClick={handleOpenModal}>Забронировать</Button>
             </section>
             <Modal isOpen={isOpen} onClose={handleCloseModal}><Form onCloseModal={handleCloseModal}/></Modal>
+            <ToastContainer autoClose={3000} />
         </>
     )
 }

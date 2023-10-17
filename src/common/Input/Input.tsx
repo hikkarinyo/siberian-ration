@@ -1,5 +1,5 @@
-import {useState} from 'react'
-import {InputProps} from '../types'
+import { useState } from 'react'
+import { InputProps } from '../types'
 import classNames from 'classnames'
 
 
@@ -27,5 +27,5 @@ export const Input = ({value, label, name, register, error, onChange}: InputProp
             </label>
             {error && <span className={cx({'inputErrorMessage': error})}>{error}</span>}
         </div>
-    );
+    )
 }
