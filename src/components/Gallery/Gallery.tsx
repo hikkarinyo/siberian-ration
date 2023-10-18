@@ -78,7 +78,7 @@ const Gallery = () => {
                             autoPlay
                             muted
                             loop
-                            poster='/images/snapshot-4.jpg'
+                            poster='/images/snapshot-4.jpeg'
                             preload='metadata'
                         />
                     </ScrollAnimation>
