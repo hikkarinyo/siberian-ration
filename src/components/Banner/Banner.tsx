@@ -46,6 +46,7 @@ const Banner = (props: BannerProps) => {
                     <li className={cx('bannerList-item')}>банкет</li>
                     <li className={cx('bannerList-item')}>кофе-брейк</li>
                     <li className={cx('bannerList-item')}>фуршет</li>
+                    <li className={cx('bannerList-item')}>гриль-меню</li>
                 </ul>
                 <Button onClick={handleOpenModal}>Забронировать</Button>
             </ScrollAnimation>
